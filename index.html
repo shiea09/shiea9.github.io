@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>For You 💌</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f3efe6;
+    overflow: hidden;
+}
+
+/* PAGE CONTAINERS */
+.page {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: opacity 1.5s ease;
+}
+
+#page2 {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* BUTTON */
+.button {
+    background: linear-gradient(#ff3b3b, #b30000);
+    padding: 20px 50px;
+    border-radius: 40px;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s;
+}
+
+.button:hover {
+    transform: scale(1.05);
+}
+
+/* TEXT */
+h1 {
+    font-family: cursive;
+    font-size: 60px;
+    color: #a00000;
+    margin-bottom: 10px;
+}
+
+p {
+    font-family: cursive;
+    font-size: 30px;
+    color: #a00000;
+}
+
+/* FLOATING HEARTS */
+.heart {
+    position: absolute;
+    color: red;
+    font-size: 20px;
+    animation: float 6s linear infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(100vh); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateY(-10vh); opacity: 0; }
+}
+
+/* CUPID */
+#cupid {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    font-size: 60px;
+}
+
+/* ARROWS */
+.arrow {
+    position: absolute;
+    font-size: 25px;
+    color: red;
+    animation: shoot 1.5s forwards;
+}
+
+@keyframes shoot {
+    0% { transform: translate(0,0); opacity: 1; }
+    100% { transform: translate(var(--x), var(--y)); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<div class="page" id="page1">
+    <div class="button" onclick="reveal()">CLICK HERE</div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="page2">
+    <h1>happy valentines day</h1>
+    <p>i love smm bubs</p>
+    <div id="cupid">💘</div>
+</div>
+
+<script>
+
+/* Floating hearts generator */
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "♥";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+}
+
+setInterval(createHeart, 400);
+
+/* Page reveal */
+function reveal() {
+    document.getElementById("page1").style.opacity = "0";
+    setTimeout(() => {
+        document.getElementById("page1").style.display = "none";
+        document.getElementById("page2").style.opacity = "1";
+        document.getElementById("page2").style.pointerEvents = "auto";
+        shootArrows();
+    }, 1500);
+}
+
+/* Cupid shooting multiple arrows */
+function shootArrows() {
+    for(let i = 0; i < 6; i++) {
+        const arrow = document.createElement("div");
+        arrow.classList.add("arrow");
+        arrow.innerHTML = "➶";
+        arrow.style.left = "60px";
+        arrow.style.bottom = "80px";
+
+        arrow.style.setProperty('--x', (Math.random()*500 + 200) + "px");
+        arrow.style.setProperty('--y', -(Math.random()*300 + 100) + "px");
+
+        document.body.appendChild(arrow);
+
+        setTimeout(() => {
+            arrow.remove();
+        }, 1500);
+    }
+}
+
+</script>
+
+</body>
+</html>
