@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>For You 💌</title>
 
+<style>
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap');
 
 body {
@@ -28,13 +29,6 @@ body {
 #page2 {
     opacity: 0;
     pointer-events: none;
-    <div class="icon" style="top:20%; left:15%;">💋</div>
-<div class="icon" style="top:30%; right:15%;">🧸</div>
-<div class="icon" style="bottom:25%; left:20%;">🍓</div>
-<div class="icon" style="bottom:30%; right:20%;">💌</div>
-<div class="icon" style="top:15%; right:40%;">🎀</div>
-<div class="icon" style="bottom:15%; left:40%;">🧁</div>
-
 }
 
 /* Button */
@@ -109,14 +103,14 @@ p {
     100% { transform: translate(var(--x), var(--y)); opacity: 0; }
 }
 
-/* Cute doodle icons */
+/* Cute icons */
 .icon {
     position: absolute;
     font-size: 40px;
     color: #b00000;
     opacity: 0.8;
 }
-
+</style>
 </head>
 
 <body>
@@ -130,12 +124,21 @@ p {
 <div class="page" id="page2">
     <h1>happy valentines day</h1>
     <p>i love smm bubs</p>
+
     <div id="cupid">💘</div>
+
+    <!-- Cute scattered icons -->
+    <div class="icon" style="top:20%; left:15%;">💋</div>
+    <div class="icon" style="top:30%; right:15%;">🧸</div>
+    <div class="icon" style="bottom:25%; left:20%;">🍓</div>
+    <div class="icon" style="bottom:30%; right:20%;">💌</div>
+    <div class="icon" style="top:15%; right:40%;">🎀</div>
+    <div class="icon" style="bottom:15%; left:40%;">🧁</div>
 </div>
 
 <script>
 
-/* Floating hearts generator */
+/* Floating hearts */
 function createHeart() {
     const heart = document.createElement("div");
     heart.classList.add("heart");
@@ -146,7 +149,7 @@ function createHeart() {
 
     setTimeout(() => {
         heart.remove();
-    }, 6000);
+    }, 5000);
 }
 
 setInterval(createHeart, 200);
@@ -162,7 +165,7 @@ function reveal() {
     }, 1500);
 }
 
-/* Cupid shooting multiple arrows */
+/* Cupid shooting arrows */
 function shootArrows() {
     for(let i = 0; i < 12; i++) {
         const arrow = document.createElement("div");
