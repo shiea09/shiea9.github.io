@@ -4,15 +4,16 @@
 <meta charset="UTF-8">
 <title>For You 💌</title>
 
-<style>
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap');
+
 body {
     margin: 0;
-    font-family: 'Segoe UI', sans-serif;
     background: #f3efe6;
     overflow: hidden;
+    font-family: 'Quicksand', sans-serif;
 }
 
-/* PAGE CONTAINERS */
+/* Page containers */
 .page {
     position: absolute;
     width: 100%;
@@ -27,44 +28,51 @@ body {
 #page2 {
     opacity: 0;
     pointer-events: none;
+    <div class="icon" style="top:20%; left:15%;">💋</div>
+<div class="icon" style="top:30%; right:15%;">🧸</div>
+<div class="icon" style="bottom:25%; left:20%;">🍓</div>
+<div class="icon" style="bottom:30%; right:20%;">💌</div>
+<div class="icon" style="top:15%; right:40%;">🎀</div>
+<div class="icon" style="bottom:15%; left:40%;">🧁</div>
+
 }
 
-/* BUTTON */
+/* Button */
 .button {
-    background: linear-gradient(#ff3b3b, #b30000);
-    padding: 20px 50px;
-    border-radius: 40px;
+    background: linear-gradient(#ff4d4d, #b30000);
+    padding: 20px 60px;
+    border-radius: 50px;
     color: white;
-    font-size: 28px;
+    font-size: 30px;
     cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    transition: transform 0.3s;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    transition: 0.3s;
 }
 
 .button:hover {
-    transform: scale(1.05);
+    transform: scale(1.08);
 }
 
-/* TEXT */
+/* Text */
 h1 {
-    font-family: cursive;
-    font-size: 60px;
-    color: #a00000;
-    margin-bottom: 10px;
+    font-family: 'Pacifico', cursive;
+    font-size: 70px;
+    color: #b00000;
+    margin-bottom: 15px;
 }
 
 p {
-    font-family: cursive;
-    font-size: 30px;
-    color: #a00000;
+    font-family: 'Pacifico', cursive;
+    font-size: 32px;
+    color: #b00000;
 }
 
-/* FLOATING HEARTS */
+/* Floating hearts */
 .heart {
     position: absolute;
     color: red;
-    font-size: 20px;
-    animation: float 6s linear infinite;
+    font-size: 25px;
+    animation: float 5s linear infinite;
 }
 
 @keyframes float {
@@ -73,27 +81,42 @@ p {
     100% { transform: translateY(-10vh); opacity: 0; }
 }
 
-/* CUPID */
+/* Cupid */
 #cupid {
     position: absolute;
-    bottom: 20px;
-    left: 20px;
-    font-size: 60px;
+    bottom: 40px;
+    left: 40px;
+    font-size: 90px;
+    animation: floatCupid 3s ease-in-out infinite;
 }
 
-/* ARROWS */
+@keyframes floatCupid {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0); }
+}
+
+/* Arrows */
 .arrow {
     position: absolute;
-    font-size: 25px;
+    font-size: 35px;
     color: red;
-    animation: shoot 1.5s forwards;
+    animation: shoot 1.2s forwards;
 }
 
 @keyframes shoot {
     0% { transform: translate(0,0); opacity: 1; }
     100% { transform: translate(var(--x), var(--y)); opacity: 0; }
 }
-</style>
+
+/* Cute doodle icons */
+.icon {
+    position: absolute;
+    font-size: 40px;
+    color: #b00000;
+    opacity: 0.8;
+}
+
 </head>
 
 <body>
@@ -126,7 +149,7 @@ function createHeart() {
     }, 6000);
 }
 
-setInterval(createHeart, 400);
+setInterval(createHeart, 200);
 
 /* Page reveal */
 function reveal() {
@@ -141,21 +164,21 @@ function reveal() {
 
 /* Cupid shooting multiple arrows */
 function shootArrows() {
-    for(let i = 0; i < 6; i++) {
+    for(let i = 0; i < 12; i++) {
         const arrow = document.createElement("div");
         arrow.classList.add("arrow");
         arrow.innerHTML = "➶";
-        arrow.style.left = "60px";
-        arrow.style.bottom = "80px";
+        arrow.style.left = "80px";
+        arrow.style.bottom = "120px";
 
-        arrow.style.setProperty('--x', (Math.random()*500 + 200) + "px");
-        arrow.style.setProperty('--y', -(Math.random()*300 + 100) + "px");
+        arrow.style.setProperty('--x', (Math.random()*700 + 200) + "px");
+        arrow.style.setProperty('--y', -(Math.random()*400 + 150) + "px");
 
         document.body.appendChild(arrow);
 
         setTimeout(() => {
             arrow.remove();
-        }, 1500);
+        }, 1200);
     }
 }
 
