@@ -67,10 +67,11 @@ p {
 .heart {
     position: absolute;
     color: #b00000;
-    font-size: 14px;
+    font-size: 12px;
     opacity: 0.5;
     animation: float 8s linear infinite;
 }
+
 
 @keyframes float {
     0% { transform: translateY(100vh); opacity: 0; }
@@ -105,8 +106,8 @@ p {
 .doodle {
     position: absolute;
     color: #8b0000;
-    font-size: 28px;
-    opacity: 0.75;
+    font-size: 26px;
+    opacity: 0.6;
 }
 </style>
 </head>
@@ -120,8 +121,8 @@ p {
 
 <!-- PAGE 2 -->
 <div class="page" id="page2">
-    <h1>happy valentines day</h1>
-    <p>i love smm bubs</p>
+    <h1>happyy valentine's day</h1>
+    <p>i loveee youu smmmm bubbsss</p>
 
     <!-- subtle cupid arrow -->
     <div id="cupid">➳</div>
@@ -133,6 +134,16 @@ p {
     <div class="doodle" style="bottom:25%; right:18%;">❀</div>
     <div class="doodle" style="top:35%; left:20%;">𓆩♡𓆪</div>
     <div class="doodle" style="bottom:15%; right:35%;">♡</div>
+
+    <div class="doodle" style="top:10%; left:30%;">♡</div>
+    <div class="doodle" style="top:12%; right:35%;">❦</div>
+    <div class="doodle" style="bottom:18%; left:30%;">✧</div>
+    <div class="doodle" style="bottom:22%; right:28%;">❀</div>
+    <div class="doodle" style="top:45%; left:8%;">♡</div>
+    <div class="doodle" style="top:50%; right:10%;">❦</div>
+    <div class="doodle" style="bottom:35%; left:40%;">✧</div>
+    <div class="doodle" style="bottom:40%; right:45%;">♡</div>
+
 </div>
 
 <script>
@@ -143,12 +154,14 @@ function createHeart() {
     heart.classList.add("heart");
     heart.innerHTML = "♥";
     heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = (6 + Math.random() * 4) + "s";
+    heart.style.fontSize = (8 + Math.random() * 12) + "px";
+    heart.style.opacity = 0.3 + Math.random() * 0.5;
+    heart.style.animationDuration = (6 + Math.random() * 5) + "s";
     document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 9000);
+    setTimeout(() => heart.remove(), 11000);
 }
 
-setInterval(createHeart, 800);
+setInterval(createHeart, 350);
 
 /* Page transition */
 function reveal() {
