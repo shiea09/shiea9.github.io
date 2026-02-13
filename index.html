@@ -14,7 +14,6 @@ body {
     font-family: 'Quicksand', sans-serif;
 }
 
-/* Page containers */
 .page {
     position: absolute;
     width: 100%;
@@ -31,7 +30,6 @@ body {
     pointer-events: none;
 }
 
-/* Button */
 .button {
     background: linear-gradient(#ff4d4d, #b30000);
     padding: 20px 60px;
@@ -47,7 +45,6 @@ body {
     transform: scale(1.08);
 }
 
-/* Text */
 h1 {
     font-family: 'Pacifico', cursive;
     font-size: 70px;
@@ -61,7 +58,6 @@ p {
     color: #b00000;
 }
 
-/* Floating hearts */
 .heart {
     position: absolute;
     color: red;
@@ -75,7 +71,6 @@ p {
     100% { transform: translateY(-10vh); opacity: 0; }
 }
 
-/* Cupid */
 #cupid {
     position: absolute;
     bottom: 40px;
@@ -90,7 +85,6 @@ p {
     100% { transform: translateY(0); }
 }
 
-/* Arrows */
 .arrow {
     position: absolute;
     font-size: 35px;
@@ -103,7 +97,6 @@ p {
     100% { transform: translate(var(--x), var(--y)); opacity: 0; }
 }
 
-/* Cute icons */
 .icon {
     position: absolute;
     font-size: 40px;
@@ -115,19 +108,16 @@ p {
 
 <body>
 
-<!-- PAGE 1 -->
 <div class="page" id="page1">
     <div class="button" onclick="reveal()">CLICK HERE</div>
 </div>
 
-<!-- PAGE 2 -->
 <div class="page" id="page2">
     <h1>happy valentines day</h1>
     <p>i love smm bubs</p>
 
     <div id="cupid">💘</div>
 
-    <!-- Cute scattered icons -->
     <div class="icon" style="top:20%; left:15%;">💋</div>
     <div class="icon" style="top:30%; right:15%;">🧸</div>
     <div class="icon" style="bottom:25%; left:20%;">🍓</div>
@@ -137,8 +127,6 @@ p {
 </div>
 
 <script>
-
-/* Floating hearts */
 function createHeart() {
     const heart = document.createElement("div");
     heart.classList.add("heart");
@@ -146,15 +134,10 @@ function createHeart() {
     heart.style.left = Math.random() * 100 + "vw";
     heart.style.animationDuration = (3 + Math.random() * 3) + "s";
     document.body.appendChild(heart);
-
-    setTimeout(() => {
-        heart.remove();
-    }, 5000);
+    setTimeout(() => heart.remove(), 5000);
 }
-
 setInterval(createHeart, 200);
 
-/* Page reveal */
 function reveal() {
     document.getElementById("page1").style.opacity = "0";
     setTimeout(() => {
@@ -165,7 +148,6 @@ function reveal() {
     }, 1500);
 }
 
-/* Cupid shooting arrows */
 function shootArrows() {
     for(let i = 0; i < 12; i++) {
         const arrow = document.createElement("div");
@@ -173,18 +155,12 @@ function shootArrows() {
         arrow.innerHTML = "➶";
         arrow.style.left = "80px";
         arrow.style.bottom = "120px";
-
         arrow.style.setProperty('--x', (Math.random()*700 + 200) + "px");
         arrow.style.setProperty('--y', -(Math.random()*400 + 150) + "px");
-
         document.body.appendChild(arrow);
-
-        setTimeout(() => {
-            arrow.remove();
-        }, 1200);
+        setTimeout(() => arrow.remove(), 1200);
     }
 }
-
 </script>
 
 </body>
