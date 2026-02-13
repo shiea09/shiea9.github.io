@@ -5,15 +5,16 @@
 <title>For You 💌</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display&display=swap');
 
 body {
     margin: 0;
     background: #f3efe6;
     overflow: hidden;
-    font-family: 'Quicksand', sans-serif;
+    font-family: 'Playfair Display', serif;
 }
 
+/* Page containers */
 .page {
     position: absolute;
     width: 100%;
@@ -30,66 +31,69 @@ body {
     pointer-events: none;
 }
 
+/* Button */
 .button {
-    background: linear-gradient(#ff4d4d, #b30000);
-    padding: 20px 60px;
-    border-radius: 50px;
+    background: linear-gradient(#c62828, #8e0000);
+    padding: 18px 55px;
+    border-radius: 40px;
     color: white;
-    font-size: 30px;
+    font-size: 26px;
     cursor: pointer;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     transition: 0.3s;
 }
 
 .button:hover {
-    transform: scale(1.08);
+    transform: scale(1.05);
 }
 
+/* Elegant Text */
 h1 {
-    font-family: 'Pacifico', cursive;
-    font-size: 70px;
-    color: #b00000;
-    margin-bottom: 15px;
+    font-family: 'Great Vibes', cursive;
+    font-size: 85px;
+    color: #8b0000;
+    margin-bottom: 10px;
+    font-weight: normal;
 }
 
 p {
-    font-family: 'Pacifico', cursive;
-    font-size: 32px;
-    color: #b00000;
+    font-family: 'Great Vibes', cursive;
+    font-size: 45px;
+    color: #8b0000;
+    margin-top: 0;
 }
 
+/* Subtle floating hearts */
 .heart {
     position: absolute;
-    color: red;
-    font-size: 25px;
-    animation: float 5s linear infinite;
+    color: #b00000;
+    font-size: 14px;
+    opacity: 0.5;
+    animation: float 8s linear infinite;
 }
 
 @keyframes float {
     0% { transform: translateY(100vh); opacity: 0; }
-    50% { opacity: 1; }
+    30% { opacity: 0.6; }
     100% { transform: translateY(-10vh); opacity: 0; }
 }
 
+/* Minimal Cupid Arrow */
 #cupid {
     position: absolute;
-    bottom: 40px;
-    left: 40px;
-    font-size: 90px;
-    animation: floatCupid 3s ease-in-out infinite;
+    bottom: 60px;
+    left: 60px;
+    font-size: 40px;
+    color: #8b0000;
+    opacity: 0.7;
 }
 
-@keyframes floatCupid {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
-    100% { transform: translateY(0); }
-}
-
+/* Gentle arrow animation */
 .arrow {
     position: absolute;
-    font-size: 35px;
-    color: red;
-    animation: shoot 1.2s forwards;
+    font-size: 22px;
+    color: #8b0000;
+    animation: shoot 1.5s forwards;
 }
 
 @keyframes shoot {
@@ -97,47 +101,56 @@ p {
     100% { transform: translate(var(--x), var(--y)); opacity: 0; }
 }
 
-.icon {
+/* Pinterest-style red doodles */
+.doodle {
     position: absolute;
-    font-size: 40px;
-    color: #b00000;
-    opacity: 0.8;
+    color: #8b0000;
+    font-size: 28px;
+    opacity: 0.75;
 }
 </style>
 </head>
 
 <body>
 
+<!-- PAGE 1 -->
 <div class="page" id="page1">
     <div class="button" onclick="reveal()">CLICK HERE</div>
 </div>
 
+<!-- PAGE 2 -->
 <div class="page" id="page2">
     <h1>happy valentines day</h1>
     <p>i love smm bubs</p>
 
-    <div id="cupid">💘</div>
+    <!-- subtle cupid arrow -->
+    <div id="cupid">➳</div>
 
-    <div class="icon" style="top:20%; left:15%;">💋</div>
-    <div class="icon" style="top:30%; right:15%;">🧸</div>
-    <div class="icon" style="bottom:25%; left:20%;">🍓</div>
-    <div class="icon" style="bottom:30%; right:20%;">💌</div>
-    <div class="icon" style="top:15%; right:40%;">🎀</div>
-    <div class="icon" style="bottom:15%; left:40%;">🧁</div>
+    <!-- red line-style doodles -->
+    <div class="doodle" style="top:15%; left:10%;">❦</div>
+    <div class="doodle" style="top:18%; right:15%;">✧</div>
+    <div class="doodle" style="bottom:20%; left:12%;">♡</div>
+    <div class="doodle" style="bottom:25%; right:18%;">❀</div>
+    <div class="doodle" style="top:35%; left:20%;">𓆩♡𓆪</div>
+    <div class="doodle" style="bottom:15%; right:35%;">♡</div>
 </div>
 
 <script>
+
+/* Softer floating hearts */
 function createHeart() {
     const heart = document.createElement("div");
     heart.classList.add("heart");
     heart.innerHTML = "♥";
     heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+    heart.style.animationDuration = (6 + Math.random() * 4) + "s";
     document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 5000);
+    setTimeout(() => heart.remove(), 9000);
 }
-setInterval(createHeart, 200);
 
+setInterval(createHeart, 800);
+
+/* Page transition */
 function reveal() {
     document.getElementById("page1").style.opacity = "0";
     setTimeout(() => {
@@ -148,17 +161,18 @@ function reveal() {
     }, 1500);
 }
 
+/* Gentle arrow burst */
 function shootArrows() {
-    for(let i = 0; i < 12; i++) {
+    for(let i = 0; i < 5; i++) {
         const arrow = document.createElement("div");
         arrow.classList.add("arrow");
         arrow.innerHTML = "➶";
         arrow.style.left = "80px";
         arrow.style.bottom = "120px";
-        arrow.style.setProperty('--x', (Math.random()*700 + 200) + "px");
-        arrow.style.setProperty('--y', -(Math.random()*400 + 150) + "px");
+        arrow.style.setProperty('--x', (Math.random()*500 + 200) + "px");
+        arrow.style.setProperty('--y', -(Math.random()*300 + 100) + "px");
         document.body.appendChild(arrow);
-        setTimeout(() => arrow.remove(), 1200);
+        setTimeout(() => arrow.remove(), 1500);
     }
 }
 </script>
